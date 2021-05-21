@@ -1,0 +1,31 @@
+.carousel {
+    .carousel-indicators {
+        li {
+            width: 10px;
+            height: 10px;
+            border: 1px solid $white;
+            background-color: transparent;
+            border-radius: 35px;
+            transition: width .6s ease-in-out;
+            &.active {
+                background-color: $white;
+                width: 30px;
+            }
+        }
+    }
+    .carousel-inner {
+        .carousel-item {
+            max-height: 75vh;
+            .carousel-caption {
+                top: 25%;
+                right: 50%;
+                bottom: auto;
+                left: 10%;
+                background-color: rgba($color: $secondary, $alpha: .5);
+                text-align: left;
+                box-shadow: 1rem 1rem 5rem $secondary !important;
+                padding: 1rem;
+            }
+        }
+    }
+}
