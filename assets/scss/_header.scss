@@ -1,0 +1,55 @@
+header {
+    .navbar {
+        .navbar-brand {
+            font-family: 'Oswald', sans-serif;
+            // text-transform: uppercase;
+            letter-spacing: 4px;
+            border-top: 2px solid $orange;
+            border-bottom: 2px solid $orange;
+        }
+        .nav {
+            .nav-item {
+                .nav-link {
+                    .badge.badge-pose {
+                        position: absolute;
+                        margin-top: -.5rem;
+                        margin-left: -.5rem;
+                    }
+                    &::after {
+                        display: none;
+                    }
+                    .nav-link-span {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .form-inline {
+            .custom-select {
+                background-color: darken($color: $light, $amount: 10);
+                max-width: 200px;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+            .form-control {
+                &:focus {
+                    background-color: inherit;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(sm) {
+    header .navbar .nav .nav-item .nav-link {
+        position: relative;
+        text-align: center;
+        line-height: 1rem;
+        .nav-link-span {
+            display: block;
+        }
+    }
+}
