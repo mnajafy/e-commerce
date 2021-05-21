@@ -1,0 +1,18 @@
+.form-control {
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.form-search {
+    position: relative;
+    .btn-search {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $secondary;
+    }
+}
+
+.custom-select {
+    background-color: transparent;
+}
