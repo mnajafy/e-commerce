@@ -98,3 +98,5 @@ OK (13 tests, 13 assertions)
 ### View:
 
 * Home
+
+![e-commerce Home](https://github.com/mnajafy/e-commerce/blob/master/e-commerce.jpeg)
