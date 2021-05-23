@@ -1,6 +1,11 @@
 .form-control {
     border-radius: 0;
     background-color: transparent;
+    &:focus {
+        background-color: inherit;
+        box-shadow: none;
+        border-color: inherit;
+    }
 }
 
 .form-search {
@@ -15,4 +20,7 @@
 
 .custom-select {
     background-color: transparent;
+    &:focus {
+        box-shadow: none;
+    }
 }
