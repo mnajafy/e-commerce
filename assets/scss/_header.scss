@@ -28,15 +28,6 @@ header {
             .custom-select {
                 background-color: darken($color: $light, $amount: 10);
                 max-width: 200px;
-                &:focus {
-                    box-shadow: none;
-                }
-            }
-            .form-control {
-                &:focus {
-                    background-color: inherit;
-                    box-shadow: none;
-                }
             }
         }
     }
