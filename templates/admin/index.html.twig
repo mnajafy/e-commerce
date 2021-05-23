@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index
+{% endblock %}
+
+{% block body %}
+
+	<section class="py-2 py-md-3 py-lg-5 bg-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-2 col-lg-3">
+					<ul class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<li class="nav-item">
+							<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-12 col-md-10 col-lg-9">
+					<div class="tab-content" id="v-pills-tabContent">
+						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<h1>User Index</h1>
+								</div>
+								<div class="col-12 col-md-6 text-md-right">
+									<a class="btn btn-outline-dark" href="{{ path('admin_new') }}">Create new</a>
+								</div>
+							</div>
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Username</th>
+										<th>Email</th>
+										<th>Roles</th>
+										<th>actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for user in users %}
+										<tr>
+											<td>{{ user.id }}</td>
+											<td>{{ user.username }}</td>
+											<td>{{ user.email }}</td>
+											<td>
+												{% for role in user.roles %}
+													<div class="badge badge-pill text-secondary border border-secondary">{{ role }}</div>
+												{% endfor %}
+												{# {{ user.roles ? user.roles|json_encode : '' }} #}
+											</td>
+											<td>
+												<a class="btn btn-outline-dark" href="{{ path('admin_show', {'id': user.id}) }}">show</a>
+												<a class="btn btn-primary" href="{{ path('admin_edit', {'id': user.id}) }}">edit</a>
+												{{ include('admin/_delete_form.html.twig') }}
+											</td>
+										</tr>
+									{% else %}
+										<tr>
+											<td colspan="6">no records found</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						{# end index #}
+
+						<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+							<table class="table">
+								<tbody>
+									<tr>
+										<th>Username</th>
+										<td>{{ user.username }}</td>
+									</tr>
+									<tr>
+										<th>Email</th>
+										<td>{{ user.email }}</td>
+									</tr>
+									<tr>
+										<th>Roles</th>
+										<td>
+											{% for role in user.roles %}
+												<div class="badge badge-pill text-secondary border border-secondary">{{ role }}</div>
+											{% endfor %}
+											{# {{ user.roles ? user.roles|json_encode : '' }} #}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						{# end index #}
+
+						<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"></div>
+						{# end index #}
+
+						<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+							Settings
+						</div>
+						{# end Settings #}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
