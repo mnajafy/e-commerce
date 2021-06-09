@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre Compte
+{% endblock %}
+
+{% block body %}
+	<section class="py-2 py-md-3 py-lg-4 py-xl-5">
+		<div class="container">
+            <h3 class="mb-4">Votre Compte</h3>
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4 mb-2 mb-md-3 mb-lg-4">
+					<a href="{{ path('profile_adresse') }}" class="media p-2 justify-content-between align-items-center border bg-white">
+						<img class="w-25 bg-success p-2 mr-2" src="{{ asset('build/logo/home.png') }}" alt="">
+
+						<div class="media-body text-dark">
+							<h5>Adresse</h5>
+							<small>Modifier le nom, les adresses de livraison des commandes et des cadeaux</small>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-12 col-md-6 col-lg-4 mb-2 mb-md-3 mb-lg-4">
+					<a href="{{ path('profile_connexion_securite') }}" class="media p-2 justify-content-between align-items-center border bg-white">
+						<img class="w-25 bg-success p-2 mr-2" src="{{ asset('build/logo/key.png') }}" alt="">
+
+						<div class="media-body text-dark">
+							<h5>Connexion & Sécurité</h5>
+							<small>Modifier l'adresse e-mail, le numéro de téléphone et le mot de passe</small>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-12 col-md-6 col-lg-4 mb-2 mb-md-3 mb-lg-4">
+					<a href="#" class="media p-2 justify-content-between align-items-center border bg-white">
+						<img class="w-25 bg-success p-2 mr-2" src="{{ asset('build/logo/credit-card.png') }}" alt="">
+
+						<div class="media-body text-dark">
+							<h5>Vos Paiements</h5>
+							<small>Gérer les modes de paiement et les paramètres, afficher les soldes et les offres</small>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-12 col-md-6 col-lg-4 mb-2 mb-md-3 mb-lg-4">
+					<a href="#" class="media p-2 justify-content-between align-items-center border bg-white">
+						<img class="w-25 bg-success p-2 mr-2" src="{{ asset('build/logo/paquet.png') }}" alt="">
+
+						<div class="media-body text-dark">
+							<h5>Vos Commandes</h5>
+							<small>Suivre, retourner ou acheter à nouveau</small>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
