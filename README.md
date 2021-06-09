@@ -15,10 +15,11 @@ Le modèle e-commerce Symfony est une solution de commerce électronique ultime.
 * Poppins
 * Prata
 
-### images
+### Images
 
 * [Lorem Picsum](https://picsum.photos/)
 * [Pixabay](https://pixabay.com/fr/)
+* [flaticon](https://www.flaticon.com/)
 
 ## Symfony Command
 
