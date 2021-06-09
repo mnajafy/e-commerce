@@ -27,9 +27,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email."
-     * )
+     * @Assert\Email
      */
     private $email;
 
@@ -41,14 +39,15 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"registration", "change_password"})
      * @Assert\Length(
      *      min = 8,
-     *      max = 50
+     *      max = 50,
+     *      groups={"registration", "change_password"}
      * )
      * @Assert\Regex(
-     *     pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-|.|_|@]).{2,}$/",
-     *     message="Uniquement les caracteres autoriser"
+     *     pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-|\.|\?|\$|\=|\/|_|@]).{2,}$/",
+     *     groups={"registration", "change_password"}
      * )
      */
     private $password;
@@ -58,13 +57,11 @@ class User implements UserInterface
      * @Assert\NotBlank
      * @Assert\Length(
      *      min = 3,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *      max = 50
      * )
      * @Assert\Regex(
      *     pattern="/^[[:space:]a-zA-Z0-9-\_\.]+$/i",
-     *     message="Uniquement les caracteres autoriser"
+     *     message="Username: Uniquement les caracteres autoriser"
      * )
      */
     private $username;
@@ -155,5 +152,13 @@ class User implements UserInterface
         $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * @Assert\IsTrue(message="The password cannot match your username")
+     */
+    public function isPasswordSafe()
+    {
+        return $this->username !== $this->password;
     }
 }
