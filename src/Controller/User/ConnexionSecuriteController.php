@@ -2,7 +2,7 @@
 
 namespace App\Controller\User;
 
-use App\Form\ChangePasswordType;
+use App\Form\User\ChangePasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -91,12 +91,12 @@ class ConnexionSecuriteController extends AbstractController
 
             $this->addFlash('success', 'Password update success!');
 
-            return $this->redirectToRoute('profile_connexion_securite');
+            return $this->redirectToRoute('app_logout');
         }
         $msg = 'Si vous voulez changer le nom associé à votre compte client e-commerce, vous pouvez le faire ci-dessous. N\'oubliez pas de cliquer sur le bouton Enregistrer les modifications quand vous avez terminé.';
         $title = 'Changez votre mot de passe';
         return $this->render('user/connexionSecurite/edit.html.twig', [
-            'ritle' => $title,
+            'title' => $title,
             'form' => $form->createView(),
             'msg' => $msg
         ]);
