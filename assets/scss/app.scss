@@ -15,8 +15,19 @@ h1, h2, h3, h4, h5, h6 {
     // letter-spacing: 4px;
 }
 
-a:hover {
-    text-decoration: none;
+a {
+    &:hover {
+        text-decoration: none;
+    }
+    &.media {
+        transition: all .6s ease-in-out;
+        &:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+            border: transparent !important;
+            // background-color: rgba($color: $success, $alpha: .3) !important;
+            background-color: $success !important;
+        }
+    }
 }
 
 .card {
