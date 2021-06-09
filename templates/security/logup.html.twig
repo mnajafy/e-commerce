@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log up!
+{% endblock %}
+
+{% block body %}
+
+	<section class="py-2 py-md-3 py-lg-4 py-xl-5 bg-white">
+		<div class="container">
+			<div class="row col-8 col-md-6 col-lg-4 mx-auto">
+				{{ form_start(form) }}
+                    {{ form_widget(form) }}
+
+                    <div class="checkbox mb-3">
+                        <small class="form-text text-muted">
+                            <input type="checkbox" name="_remember_me" value="remember-me">
+                            En passant votre commande, vous acceptez
+                            <a href="#">les Conditions générales</a>
+                            de vente d’e-commerce.
+                        </small>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block rounded-0" type="submit">Creer votre compte</button>
+				{{ form_end(form) }}
+
+				<small class="form-text text-muted">Vous avez déjà un compte e-commerce
+					<a href="{{ path('app_login') }}">connectez-vous!</a></small>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
