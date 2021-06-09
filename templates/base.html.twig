@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>
-			{% block title %}e-commerce
+		<title>e-commerce
+			{% block title %}
 			{% endblock %}
 		</title>
 		{% block stylesheets %}
@@ -14,27 +14,46 @@
 		{% block header %}
 			<header class="bg-light">
 				<nav class="navbar navbar-light bg-light">
-					<a class="navbar-brand" href="#">e.commerce</a>
+					<a class="navbar-brand" href="{{ path('home') }}">e.commerce</a>
 
 					<ul class="nav order-lg-2">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle text-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-user"></i>
-								<span class="nav-link-span">connectez vous</span>
-							</a>
+							{% if app.user %}
+								<a class="nav-link dropdown-toggle text-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-user"></i>
+									<span class="nav-link-span">{{ app.user.username }}</span>
+								</a>
+							{% else %}
+								<a class="nav-link dropdown-toggle text-secondary" href="{{ path('app_login') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-user"></i>
+									<span class="nav-link-span">connectez vous</span>
+								</a>
+							{% endif %}
 
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Something else here</a>
+								{% if app.user %}
+									<a class="dropdown-item" href="{{ path('profile', {username: app.user.username, id: app.user.id}) }}">{{ app.user.username }}</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+								{% else %}
+									<a class="dropdown-item" href="{{ path('app_login') }}">Connectez vous</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="{{ path('app_logup') }}">Inscription</a>
+								{% endif %}
 							</div>
 						</li>
 
 						<li class="nav-item">
 							<a class="nav-link text-secondary" href="#">
 								<i class="fas fa-shopping-basket"></i>
-								<div class="badge badge-pose badge-pill badge-dark">99+</div>
+								<div class="badge badge-pose badge-pill badge-dark">
+									{% if app.user %}
+										99+
+									{% else %}
+										0
+									{% endif %}
+								</div>
 								<span class="nav-link-span">panier</span>
 							</a>
 						</li>
@@ -114,7 +133,7 @@
 				</nav>
 			</header>
 		{% endblock %}
-        
+
 		<main>
 			{% block body %}{% endblock %}
 		</main>
