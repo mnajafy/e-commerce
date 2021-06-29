@@ -20,7 +20,7 @@ class SecurityController extends AbstractController
         $this->passwordEncoder = $passwordEncoder;
     }
     /**
-     * @Route("/inscription", name="app_logup")
+     * @Route("/inscription", name="security_logup")
      */
     public function logup(Request $request): Response
     {
@@ -38,7 +38,7 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash('success', 'Vous etes bien inscrie connectez vous!');
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('security_login');
         }
 
         return $this->render('security/logup.html.twig', [
@@ -47,7 +47,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/login", name="security_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -69,7 +69,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/logout", name="security_logout")
      */
     public function logout()
     {
