@@ -8,7 +8,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-md-6 mx-auto mb-2 mb-md-3 mb-lg-4">
-			        <h3 class="mb-4">Modifier votre adresse</h3>
+					<h3 class="mb-4">Modifier votre adresse</h3>
 
 					<div class="d-flex justify-content-between align-items-center mb-2 p-2 border bg-white">
 						<div class="media-body text-dark">
@@ -18,7 +18,7 @@
 
 						<a href="{{ path('profile_connexion_securite_edit_username') }}" class="btn btn-secondary">Modifier</a>
 					</div>
-                    
+
 					<div class="d-flex justify-content-between align-items-center mb-2 p-2 border bg-white">
 						<div class="media-body text-dark">
 							<h5>Email</h5>
@@ -27,6 +27,9 @@
 
 						<button class="btn btn-secondary">Modifier</button>
 					</div>
+					
+					<a href="{{ path('profile', {'username': app.user.username, 'id': app.user.id}) }}" class="btn btn-primary">Terminé</a>
+
 				</div>
 			</div>
 		</div>
