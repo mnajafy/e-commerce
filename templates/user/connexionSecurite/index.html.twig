@@ -34,7 +34,7 @@
 						<a href="{{ path('profile_connexion_securite_edit_email') }}" class="btn btn-secondary">Modifier</a>
 					</div>
 
-					<div class="d-flex justify-content-between align-items-center p-2 border bg-white">
+					<div class="d-flex justify-content-between align-items-center mb-2 mb-md-3 mb-lg-4 p-2 border bg-white">
 						<div class="media-body text-dark">
 							<h5>Mot de passe :</h5>
 							<p class="mb-0">********</p>
@@ -42,6 +42,8 @@
 
 						<a href="{{ path('profile_connexion_securite_edit_password') }}" class="btn btn-secondary">Modifier</a>
 					</div>
+
+					<a href="{{ path('profile', {'username': app.user.username, 'id': app.user.id}) }}" class="btn btn-primary">Terminé</a>
 				</div>
 			</div>
 		</div>
