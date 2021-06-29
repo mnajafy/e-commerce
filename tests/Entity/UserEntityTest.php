@@ -71,22 +71,22 @@ class UserEntityTest extends KernelTestCase
     // Test Password
     public function testPasswordIsEmpty(): void
     {
-        $this->assertHasErrors($this->getEntity()->setPassword(''), 2);
+        $this->assertHasErrors($this->getEntity()->setPassword(''), 2, ['registration']);
     }
 
     public function testPasswordMinLength(): void
     {
-        $this->assertHasErrors($this->getEntity()->setPassword(self::PASSWORD_MIN_CARACTERES), 1);
+        $this->assertHasErrors($this->getEntity()->setPassword(self::PASSWORD_MIN_CARACTERES), 1, ['registration']);
     }
 
     public function testPasswordMaxLength(): void
     {
-        $this->assertHasErrors($this->getEntity()->setPassword(self::PASSWORD_MAX_CARACTERES), 1);
+        $this->assertHasErrors($this->getEntity()->setPassword(self::PASSWORD_MAX_CARACTERES), 1, ['registration']);
     }
 
     public function testPasswordInvalidCaracther(): void
     {
-        $this->assertHasErrors($this->getEntity()->setPassword(self::PASSWORD_INVALID), 1);
+        $this->assertHasErrors($this->getEntity()->setPassword(self::PASSWORD_INVALID), 1, ['registration']);
     }
 
     // User is valid 
@@ -104,11 +104,15 @@ class UserEntityTest extends KernelTestCase
             ->setRoles(self::ROLE);
     }
 
-    public function assertHasErrors(User $user, int $numbreOfExpectedErrors = 0): ConstraintViolationList
+    public function assertHasErrors(User $user, int $numbreOfExpectedErrors = 0,array $groups = []): ConstraintViolationList
     {
         self::bootKernel();
 
-        $errors = self::$container->get('validator')->validate($user);
+        if ($groups !== null) {
+            $errors = self::$container->get('validator')->validate($user, null, $groups);
+        }else {
+            $errors = self::$container->get('validator')->validate($user);
+        }
 
         $message = [];
 
