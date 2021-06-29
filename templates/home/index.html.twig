@@ -55,13 +55,20 @@
             <div class="col mb-2 mb-lg-0">
                 <div class="card shadow h-100">
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <img class="d-inline-block align-text-top rounded-circle" src="https://picsum.photos/id/0/50.webp" alt="">
-                            Bonjour Admin
-                        </h5>
-                        <p class="card-text"><small class="font-weight-bold">Suggestions pour vous</small></p>
-                        <img class="card-img-top rounded-0 mb-2" src="https://picsum.photos/id/0/200.webp" alt="">
-                        <a class="card-link" href="#">Voir plus</a>
+                        {% if app.user  %}
+                            <h5 class="card-title">
+                                <img class="d-inline-block align-text-top rounded-circle" src="https://picsum.photos/id/0/50.webp" alt="">
+                                Bonjour {{ app.user.username }}
+                            </h5>
+                            <p class="card-text"><small class="font-weight-bold">Suggestions pour vous</small></p>
+                            <img class="card-img-top rounded-0 mb-2" src="https://picsum.photos/id/0/200.webp" alt="">
+                            <a class="card-link" href="#">Voir plus</a>
+                        {% else %}
+                            <h5 class="card-title">Voues etes pas connecter</h5>
+                            <p class="card-text"><small class="font-weight-bold">Connecter vous pour profiter une experience unique !</small></p>
+                            <img class="card-img-top rounded-0 mb-2" src="https://picsum.photos/id/0/200.webp" alt="">
+                            <a class="card-link" href="{{ path('security_login') }}">Connecter vous ici</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
