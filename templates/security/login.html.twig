@@ -23,7 +23,7 @@
 						<div class="mb-3">
 							You are logged in as
 							{{ app.user.username }},
-							<a href="{{ path('app_logout') }}">Logout</a>
+							<a href="{{ path('security_logout') }}">Logout</a>
 						</div>
 					{% endif %}
 
@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="inputEmail">Email address label</label>
+						<label for="inputEmail">Email address</label>
 						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 					</div>
 
@@ -60,7 +60,7 @@
 					<a href="#">les Conditions générales</a>
 					de vente d’e-commerce.</small>
 				<small class="form-text text-muted">Nouveau chez e-commerce ?
-					<a href="{{ path('app_logup') }}">Créer votre compte e-commerce</a>
+					<a href="{{ path('security_logup') }}">Créer votre compte e-commerce</a>
 				</small>
 			</div>
 		</div>
