@@ -91,7 +91,7 @@ class ConnexionSecuriteController extends AbstractController
 
             $this->addFlash('success', 'Password update success!');
 
-            return $this->redirectToRoute('app_logout');
+            return $this->redirectToRoute('security_logout');
         }
         $msg = 'Si vous voulez changer le nom associé à votre compte client e-commerce, vous pouvez le faire ci-dessous. N\'oubliez pas de cliquer sur le bouton Enregistrer les modifications quand vous avez terminé.';
         $title = 'Changez votre mot de passe';
